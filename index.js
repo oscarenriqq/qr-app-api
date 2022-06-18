@@ -50,8 +50,8 @@ app.post('/api/entry', (request, response, next) => {
     const entry = request.body
 
     if (entry.user_id) {
-        User.findById(entry.user_id).populate('entries').then(user => {
-            console.log(user)
+        User.findById(entry.user_id).then(user => {
+
             const newEntry = new Entry({
                 user_id: user.id,
                 start_date: new Date().toISOString()
